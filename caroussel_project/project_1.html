@@ -1,0 +1,233 @@
+Certainly! You can create clickable areas on the left and right sides of the window to navigate to the previous and next slides. Here's how you can modify the code:
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bootstrap Carousel</title>
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    body, html {
+      height: 100%;
+      margin: 0;
+      overflow: hidden;
+    }
+
+    .carousel-container {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+    }
+
+    .carousel-inner {
+      display: flex;
+      height: 100vh; /* Each slide fills the entire viewport vertically */
+      transition: transform 0.5s ease;
+    }
+
+    .carousel-item {
+      flex: 0 0 100%;
+      position: relative;
+    }
+
+    .carousel-item:hover::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      width: 50%;
+      height: 100%;
+      z-index: -1;
+	  cursor: url('../arrow_right.png') , e-resize;
+    }
+
+    .carousel-item:hover::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 50%;
+      height: 100%;
+      z-index: -1;
+	  cursor: url('../arrow_left.png') , w-resize;
+    }
+
+    .carousel-item:hover::after {
+      cursor: url('../arrow_right.png') , w-resize;
+    }
+
+    .carousel-item:hover::before {
+      cursor: url('../arrow_left.png') , w-resize;
+    }
+
+    /* Change cursor to left or right arrows when hovering near edges */
+    .carousel-container:hover {
+      cursor: url('../arrow_middle.png') , w-resize;
+    }
+
+    .carousel-container:hover .carousel-control-prev {
+      cursor: url('../arrow_left.png') , w-resize;
+    }
+
+    .carousel-container:hover .carousel-control-next {
+      cursor: url('../arrow_right.png') , w-resize;
+    }
+
+    .carousel-control-zone {
+      position: fixed;
+      top: 0;
+      bottom: 0;
+      width: 20%; /* Adjust the width of the control zones */
+      z-index: 1000;
+      background: transparent; /* Make the zone transparent */
+	  cursor: url('../arrow_middle.png') , w-resize;
+    }
+
+    .carousel-control-zone.left {
+      left: 0;
+	  cursor: url('../arrow_left.png') , w-resize;
+	      }
+
+    .carousel-control-zone.right {
+      right: 0;
+	  cursor: url('../arrow_right.png') , w-resize;
+    }
+	
+	
+	/* Styles for overlay */
+  .overlay {
+    display: none; /* Hide initially */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255, 0, 0, 0.5); /* Red background with 50% opacity */
+    z-index: 9000; /* Ensure the overlay is on top of other content */
+  }
+
+  /* Styles for content within the overlay */
+  .overlay-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    font-size: 24px;
+    text-align: center;
+  }
+
+  /* Hide the scrollbar when overlay is shown */
+  body.overlay-open {
+    overflow: hidden;
+  }
+  
+   .info {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 200px;
+    height: 50px;
+    z-index: 9999; /* Ensure the overlay is on top of other content */
+	cursor: pointer;
+  }
+  
+   .button {
+    width: 200px;
+    height: 50px;
+    z-index: 9999; /* Ensure the overlay is on top of other content */
+	
+  }
+  
+  .h2 {
+    font-family: Arial, Helvetica, sans-serif;
+  }
+  .h2:hover {
+    font-family: Arial, Helvetica, sans-serif;
+	text-decoration: underline;
+  }
+  </style>
+</head>
+<body>
+
+ <!-- PROJECT 1 -->
+<div class="carousel-container">
+  <div id="myCarousel1" class="carousel slide" data-ride="carousel">
+    <div class="carousel-inner">
+     <!-- SLIDE 1 -->
+      <div class="carousel-item active">
+        <div class="d-flex align-items-center justify-content-center" style="height: 100vh; background-color: #007bff;">
+          <h1>Slide 1</h1>
+        </div>
+      </div>
+      <!-- SLIDE 2 -->
+      <div class="carousel-item">
+        <div class="d-flex align-items-center justify-content-center" style="height: 100vh; background-color: #28a745;">
+          <h1>Slide 2</h1>
+        </div>
+      </div>
+      <!-- SLIDE 3 -->
+      <div class="carousel-item">
+        <div class="d-flex align-items-center justify-content-center" style="height: 100vh; background-color: #dc3545;">
+          <h1>Slide 3</h1>
+        </div>
+      </div>
+      <!-- SLIDE 4 -->
+      <div class="carousel-item">
+        <div class="d-flex align-items-center justify-content-center" style="height: 100vh; background-color: purple;">
+          <h1>Slide 4</h1>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Control zones -->
+  <a class="carousel-control-zone left" href="#myCarousel1" role="button" data-slide="prev"></a>
+  <a class="carousel-control-zone right" href="#myCarousel1" role="button" data-slide="next"></a>
+</div>
+
+<!-- PROJECT 2 -->
+<div class="carousel-container">
+  <div id="myCarousel2" class="carousel slide" data-ride="carousel">
+    <div class="carousel-inner">
+     <!-- SLIDE 1 -->
+      <div class="carousel-item active">
+        <div class="d-flex align-items-center justify-content-center" style="height: 100vh; background-color: #007bff;">
+          <h1>Slide 1</h1>
+        </div>
+      </div>
+      <!-- SLIDE 2 -->
+      <div class="carousel-item">
+        <div class="d-flex align-items-center justify-content-center" style="height: 100vh; background-color: #28a745;">
+          <h1>Slide 2</h1>
+        </div>
+      </div>
+      <!-- SLIDE 3 -->
+      <div class="carousel-item">
+        <div class="d-flex align-items-center justify-content-center" style="height: 100vh; background-color: #dc3545;">
+          <h1>Slide 3</h1>
+        </div>
+      </div>
+      <!-- SLIDE 4 -->
+      <div class="carousel-item">
+        <div class="d-flex align-items-center justify-content-center" style="height: 100vh; background-color: purple;">
+          <h1>Slide 4</h1>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Control zones -->
+  <a class="carousel-control-zone left" href="#myCarousel2" role="button" data-slide="prev"></a>
+  <a class="carousel-control-zone right" href="#myCarousel2" role="button" data-slide="next"></a>
+</div>
+
+
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
