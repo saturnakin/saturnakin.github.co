@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Saturn Akin: Overview</title>
+  
+   <!-- Bootstrap -->
+    <link href="css/bootstrap-4.4.1.css" rel="stylesheet">
+   <!-- carefull can mess up -->
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+  
+
+  <style>
+  
+  /* taken from bootstrap */
+  
+  body {	
+  margin: 0;
+  padding: 0;
+  background: -webkit-gradient(linear, left top, right bottom, color-stop(0%,#994185), color-stop(100%,#e63735)); /* Chrome,Safari4+ */
+  background: -moz-linear-gradient(-45deg,  #994185 0%, #e63735 100%); /* FF3.6+ */
+  background: -webkit-gradient(linear, left top, right bottom, color-stop(0%,#994185), color-stop(100%,#e63735)); /* Chrome,Safari4+ */
+  background: -webkit-linear-gradient(-45deg,  #994185 0%,#e63735 100%); /* Chrome10+,Safari5.1+ */
+  background: -o-linear-gradient(-45deg,  #994185 0%,#e63735 100%); /* Opera 11.10+ */
+  background: -ms-linear-gradient(-45deg,  #994185 0%,#e63735 100%); /* IE10+ */
+  background: linear-gradient(135deg,  #994185 0%,#e63735 100%); /* W3C */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr="#994185", endColorstr="#e63735",GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* CSS for the gallery */
+
+.container.gallery .row {
+  justify-content: left; /* Center the content horizontally */
+  width: 90vw;
+  border: 10px solid yellow;
+  
+  }
+
+.container.gallery .col-md-3 {
+  flex: 0 0 calc(5% - 10px); /* Adjust the column width to fit 6 columns by default */
+  max-width: calc(5% - 10px); /* Adjust the maximum width of each column by default */
+  margin: 0 100px 0px; /* Add some margin for spacing between columns and rows */
+}
+
+.gallery img {
+      width: 12vw; /* Adjust the height of images in the gallery */	 /* Need to be changed with calc 16% over */
+      margin: 30px;
+	  padding: 10px;
+      cursor: pointer;
+	  border: 10px solid red;
+	  display:inline-block;
+	  
+    }
+
+    .gallery {
+	  position: absolute;
+      text-align: left;
+	  width: 90vw;
+	  max-witdh: 90vw; 
+	  border: 10px solid blue;
+	  left: 0px;
+    }
+
+
+ 
+
+    #overlay {
+      display: none;
+      position: fixed;
+      z-index: 2000; /* Set a higher z-index for the overlay */
+      background-color: rgba(0, 0, 0, 0.9);
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+    }
+
+    #modal-content {
+	  position: relative;
+	  padding-left: 0%; 
+	  width: 100vw; 
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      height: 100%;
+	  border: 10px solid yellow; 
+	  z-index: 1000; /* Set a lower z-index for the modal content */
+	  left: 0px;
+	  
+    }
+
+    .content-wrapper {
+      max-width: 90%;
+	  border: 10px solid red;
+    }
+
+    #modal-content img {
+      max-height: 90vh;
+      max-width: 90vw;
+    }
+
+    #close-btn {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      color: white;
+      font-size: 24px;
+      cursor: pointer;
+	  z-index: 1100;
+    }
+
+    #left-arrow, #right-arrow {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      color: white;
+      font-size: 40px;
+      cursor: pointer;
+      z-index: 1100;
+    }
+
+    #left-arrow {
+      left: 20px;
+	  z-index: 9000;
+    }
+
+    #right-arrow {
+      right: 20px;
+	  z-index: 9000;
+    }
+	
+	 .galleryholder {
+      max-width: 100vw;
+	  width: 100vw;
+	  border: 10px solid pink;
+	  content-align: left;
+	  text-align: left;
+    }
+	
+	
+	/* Media query for smaller screens */
+@media only screen and (max-width: 1920px) {
+ 
+
+.container.gallery .col-md-3 {
+  flex: 0 0 calc(15% - 10px); /* Adjust the column width to fit 6 columns by default */
+  max-width: calc(15% - 10px); /* Adjust the maximum width of each column by default */
+  margin: 0 5px 20px; /* Add some margin for spacing between columns and rows */
+}
+  
+  .gallery img {
+      width: 15vw; /* Adjust the height of images in the gallery */	 /* Need to be changed with calc 16% over */
+      margin: 30px;
+	  padding: 10px;
+      cursor: pointer;
+	  border: 10px solid red;
+	  display:inline-block;
+	  
+    }
+
+}
+	
+/* Media query for smaller screens */
+@media only screen and (max-width: 992px) {
+  .container.gallery .col-md-3 {
+    flex-basis: calc(23% - 10px); /* Adjust the column width to fit 3 columns for screens up to 768px */
+    max-width: calc(23% - 10px); /* Adjust the maximum width of each column for screens up to 768px */
+  }
+  
+  .gallery img {
+      width: 20vw; /* Adjust the height of images in the gallery */	 /* Need to be changed with calc 16% over */
+      margin: 10px;
+      cursor: pointer;
+	  border: 10px solid red;
+	  display:inline-block;
+	  
+    }
+  
+}
+
+	
+
+/* Media query for smaller screens */
+@media only screen and (max-width: 768px) {
+  .container.gallery .col-md-3 {
+    flex-basis: calc(30% - 10px); /* Adjust the column width to fit 3 columns for screens up to 768px */
+    max-width: calc(30% - 10px); /* Adjust the maximum width of each column for screens up to 768px */
+  }
+  
+  .gallery img {
+      width: 30vw; /* Adjust the height of images in the gallery */	 /* Need to be changed with calc 16% over */
+      margin: 10px;
+      cursor: pointer;
+	  border: 10px solid red;
+	  display:inline-block;
+	  
+    }
+  
+}
+
+/* Media query for even smaller screens */
+@media only screen and (max-width: 576px) {
+  .container.gallery .col-md-3 {
+    flex-basis: calc(100% - 10px); /* Adjust the column width to fit 2 columns for screens up to 576px */
+    max-width: calc(100% - 10px); /* Adjust the maximum width of each column for screens up to 576px */
+	
+	
+  }
+  
+    .gallery img {
+      width: 80vw; /* Adjust the height of images in the gallery */	 /* Need to be changed with calc 16% over */
+      margin: 10px;
+      cursor: pointer;
+	  border: 10px solid red;
+	  display:inline-block;
+	  
+    }
+}
+	
+  </style>
+</head>
+<body style="overflow-x: hidden; background-color:#C66">
+
+<nav class="navbar fixed-bottom"> <a class="navbar-brand" href="codes/gallery.html"></a>
+	   
+ <div class="container-fluid">
+ <div class="row"><h2>  
+ <div class="container">
+  <div class="row">
+    <div class="col-sm">
+      <a href="../index-with_carroussel.html">Projects</a>
+    </div>
+    <div class="col-sm">
+      About
+    </div>
+    <div class="col-sm">
+      <a href="codes/gallery.html">Overview</a>
+    </div>
+  </div>
+</div>
+          </div>
+</nav>
+
+<div class="container gallery">
+<div class="galleryholder" id="imaginary-gallery">
+  <h2>Imaginary Set</h2>
+  <div class="row" id="imaginary-images">
+    <!-- Imaginary set images will be dynamically generated here -->
+  </div>
+</div>
+
+<div class="galleryholder" id="new-body-gallery">
+  <h2>New Body Set</h2>
+  <div class="row" id="new-body-images">
+    <!-- New body set images will be dynamically generated here -->
+  </div>
+</div>
+</div>
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    // Function to generate gallery images
+    function generateGalleryImages(prefix, containerId, numberOfImages) {
+      const galleryContainer = document.getElementById(containerId);
+
+      // Generate HTML for gallery images
+      for (let i = 1; i <= numberOfImages; i++) {
+        // Create image element
+        const img = document.createElement('img');
+        img.src = `${prefix}_${i}.jpg`; // Set image source
+        img.alt = `${prefix} Image ${i}`; // Set image alt attribute
+        img.classList.add('img-inlineblock'); // Add class for styling
+
+        // Create column element
+        const col = document.createElement('div');
+        col.classList.add('col-md-3'); // Add Bootstrap column class
+
+        // Append image to column
+        col.appendChild(img);
+
+        // Append column to gallery container
+        galleryContainer.appendChild(col);
+      }
+    }
+
+    // Generate images for the imaginary set with 9 images
+    generateGalleryImages('imaginary', 'imaginary-images', 9);
+
+    // Generate images for the new body set with 15 images
+    generateGalleryImages('new_body', 'new-body-images', 15);
+  });
+</script>
+
+
+
+
+
+<div id="overlay">
+  <span id="close-btn">&times;</span>
+  <span id="left-arrow">&lt;</span>
+  <span id="right-arrow">&gt;</span>
+  <div id="modal-content">
+    <div class="content-wrapper">
+      <img id="expanded-img" src="" alt="Expanded Image">
+    </div>
+  </div>
+</div>
+
+	<script>
+ document.addEventListener('DOMContentLoaded', function () {
+  const galleryImages = document.querySelectorAll('.gallery img');
+  const overlay = document.getElementById('overlay');
+  const expandedImg = document.getElementById('expanded-img');
+  const closeBtn = document.getElementById('close-btn');
+  const leftArrow = document.getElementById('left-arrow');
+  const rightArrow = document.getElementById('right-arrow');
+
+  // Function to open the expanded image
+  function openModal(imgSrc) {
+    expandedImg.src = imgSrc;
+    overlay.style.display = 'flex';
+  }
+
+  // Function to close the expanded image
+  function closeModal() {
+    overlay.style.display = 'none';
+  }
+
+  // Add click event listeners to gallery images
+  galleryImages.forEach(function(img) {
+    img.addEventListener('click', function () {
+      openModal(this.src);
+    });
+  });
+
+  // Add click event listener to close button
+  closeBtn.addEventListener('click', function () {
+    closeModal();
+  });
+
+  // Add click event listener to overlay to close modal
+  overlay.addEventListener('click', function (e) {
+    if (e.target === this) {
+      closeModal();
+    }
+  });
+  
+  // Enable closing the modal when pressing the Esc key
+document.addEventListener('keydown', function (e) {
+  if (e.key === 'Escape') {
+    closeModal();
+  }
+});
+
+  // Add click event listeners to close the modal when clicking on modal content or image
+  document.getElementById('modal-content').addEventListener('click', closeModal);
+  document.getElementById('expanded-img').addEventListener('click', closeModal);
+
+  // Enable left/right navigation using arrow keys
+  document.addEventListener('keydown', function (e) {
+    if (overlay.style.display === 'flex') {
+      if (e.key === 'ArrowLeft') {
+        navigateCarousel(-1);
+      } else if (e.key === 'ArrowRight') {
+        navigateCarousel(1);
+      }
+    }
+  });
+
+  // Add click event listeners to left and right arrows
+  leftArrow.addEventListener('click', function () {
+    navigateCarousel(-1);
+  });
+
+  rightArrow.addEventListener('click', function () {
+    navigateCarousel(1);
+  });
+
+  // Function to navigate the carousel
+  function navigateCarousel(direction) {
+    const currentIndex = Array.from(galleryImages).findIndex(img => img.src === expandedImg.src);
+    let nextIndex = (currentIndex + direction) % galleryImages.length;
+    if (nextIndex < 0) {
+      nextIndex = galleryImages.length - 1;
+    }
+    expandedImg.src = galleryImages[nextIndex].src;
+  }
+});
+
+
+</script>
+
+
+</body>
+</html>
